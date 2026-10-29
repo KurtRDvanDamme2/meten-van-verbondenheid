@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onepager: Impact Meten in De Moester</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hih: {
+                            green: '#1E5939',
+                            orange: '#E35220',
+                            sand: '#F5F2EB',
+                            dark: '#2C3531',
+                            gray: '#555F5A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #E5E0D8;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #2C3531;
+        }
+
+        /* Flip Card Base Styles */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 320px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            border-radius: 20px 0 20px 0; /* Asymmetrische HiH hoeken */
+        }
+
+        /* Trigger flip on hover */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 20px 0 20px 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Front Styling */
+        .flip-card-front {
+            background-color: #FFFFFF;
+            border-top: 6px solid #1E5939;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background-color: #F5F2EB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #E35220;
+            border: 2px solid #E35220;
+        }
+
+        .flip-card-front h3 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #1E5939;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .flip-card-front p {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #555F5A;
+        }
+
+        /* Back Styling */
+        .flip-card-back {
+            background-color: #1E5939;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 30px;
+            text-align: left;
+            border-bottom: 6px solid #E35220;
+        }
+
+        .flip-card-back h4 {
+            color: #E35220;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .flip-card-back p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #F5F2EB;
+        }
+
+        .flip-card-back .highlight {
+            background-color: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            border-left: 4px solid #E35220;
+            font-weight: bold;
+        }
+
+        /* Alternerende kleuren voor bepaalde kaarten */
+        .flip-card.accent .flip-card-front { border-top-color: #E35220; }
+        .flip-card.accent .icon-circle { color: #1E5939; border-color: #1E5939; }
+        .flip-card.accent .flip-card-front h3 { color: #E35220; }
+        
+        .flip-card.accent .flip-card-back { background-color: #E35220; border-bottom-color: #1E5939; }
+        .flip-card.accent .flip-card-back h4 { color: #F5F2EB; }
+    </style>
+</head>
+<body class="p-4 md:p-8 antialiased">
+
+    <!-- Container -->
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- Header -->
+        <div class="bg-white rounded-[40px_0_40px_0] p-8 md:p-12 shadow-xl mb-10 border-l-8 border-hih-orange">
+            <div class="inline-block bg-hih-orange text-white text-xs font-bold px-4 py-1 rounded-full mb-4 uppercase tracking-widest">
+                Strategisch Kader: Meetinstrumenten
+            </div>
+            <h1 class="text-3xl md:text-5xl font-black text-hih-dark mb-4 uppercase">
+                Van Output naar Outcome
+            </h1>
+            <p class="text-lg text-hih-gray max-w-3xl leading-relaxed">
+                We stoppen met enkel "aanwezigen tellen" (output). Subsidieverstrekkers (zoals het Coletafonds) en ToekomstZorg eisen bewijs dat onze werking <strong>verbondenheid, autonomie en zingeving</strong> (outcome) vergroot. <br><br>
+                <em>Beweeg over de kaarten hieronder om te ontdekken hoe we deze "zachte" waarden keihard kunnen meten.</em>
+            </p>
+        </div>
+
+        <!-- Flip Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Card 1: Ladder van Eigenaarschap -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-circle">🪜</div>
+                        <h3>Ladder van Eigenaarschap</h3>
+                        <p>De methode van Clubhuis De Waterheuvel om actieve participatie te meten.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Wat betekent dit concreet?</h4>
+                        <p>Leden vinken niet af "of" ze in de tuin waren, maar scoren hun <strong>rol</strong>. Gaan ze van 'weten wat er gebeurt' (trede 1), naar 'meedoen' (trede 3), tot 'zelf het initiatief nemen voor de appelkweek' (trede 5)?</p>
+                        <div class="highlight">Bewijs voor subsidies: We tonen de groei in autonomie en het terugwinnen van betekenisvolle rollen.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: De Herstelster -->
+            <div class="flip-card accent">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-circle">🕸️</div>
+                        <h3>De Herstelster</h3>
+                        <p>Visuele Zelfredzaamheidsmatrix (ZRM) op 10 levensdomeinen.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Wat betekent dit concreet?</h4>
+                        <p>Geen klinische symptomen meten, maar maatschappelijk herstel. Het lid en de begeleider vullen elke 6 maanden een 'spinnenweb'-grafiek in op assen zoals wonen, sociaal netwerk en zingeving.</p>
+                        <div class="highlight">Bewijs voor subsidies: Een visuele, data-gedreven grafiek die aantoont dat het leven van het lid verbreedt sinds de komst naar De Moester.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: PsyMate -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-circle">📱</div>
+                        <h3>PsyMate (Delespaul)</h3>
+                        <p>Experience Sampling Method (meten in het moment zelf).</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Wat betekent dit concreet?</h4>
+                        <p>Leden geven via een app of dagboekje op willekeurige momenten op de dag antwoord op: <em>"Hoe voel ik mij nu?"</em> en <em>"Met wie ben ik?"</em>.</p>
+                        <div class="highlight">Bewijs voor subsidies: We meten de daadwerkelijke, momentane afname van eenzaamheid wanneer leden op ons domein of in de Zorgzame Buurt zijn.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: ROSI -->
+            <div class="flip-card accent">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-circle">🏢</div>
+                        <h3>ROSI (Scan)</h3>
+                        <p>Recovery Orienting Systems Indicators (Het meten van de vzw).</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Wat betekent dit concreet?</h4>
+                        <p>Hier meten we niet de kwetsbaarheid van het lid, maar <strong>de prestatie van ons bestuur en team</strong>. Leden vullen in of De Moester hen écht gelijkwaardig, veilig en als volwaardig mens behandelt.</p>
+                        <div class="highlight">Bewijs voor subsidies: Toont aan de overheid dat wij een lerende, transparante organisatie zijn die co-creatie aandurft.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: MSC -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="icon-circle">✍️</div>
+                        <h3>Most Significant Change</h3>
+                        <p>Kwalitatieve impactmeting. Het capteren van het échte verhaal.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Wat betekent dit concreet?</h4>
+                        <p>Cijfers missen soms de diepte van herstel. Elk halfjaar stellen we de leden slechts één open vraag: <em>"Wat is voor jou de meest betekenisvolle verandering in je leven sinds je in De Moester bent?"</em></p>
+                        <div class="highlight">Bewijs voor subsidies: Deze gebundelde quotes vormen de krachtigste, meest emotionele munitie voor elk subsidiedossier of beleidsplan.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+```eof
+
+Druk in het rechtervenster even op **Preview** en beweeg je muis over de kaarten (of tik erop op je telefoon). De kaarten zullen visueel prachtig 'omdraaien' (flips) om de concrete vertaling en het nut voor De Moester te onthullen. 
+
+Dit is een geweldig document om bij de hand te hebben wanneer jullie met vzw Bieënkorf of het Coletafonds spreken over hoe jullie het succes van het project hard gaan maken!
